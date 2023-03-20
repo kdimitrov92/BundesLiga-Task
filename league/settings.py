@@ -2,6 +2,8 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+SECRET_KEY = '4e&6aw+(5&cg^_!05r(&7_#dghg_pdgopq(yk)xa^bog7j)^*j'
+
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
@@ -12,7 +14,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join('', 'templates'),
+            os.path.join(BASE_DIR, 'league', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
