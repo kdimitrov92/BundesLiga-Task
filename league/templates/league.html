@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="row" style="margin: 30px 0 50px 0">
+    <div class="col-md-4 offset-md-4">
+        <form action="" method="GET" id="search-form" class="input-group mb-3">
+            <input id="team_search"
+                   name="team_search"
+                   type="text"
+                   class="form-control"
+                   placeholder="Search for a team..."
+                   aria-label="team-name"
+                   aria-describedby="team-name"
+                   value="{{ team_search }}">
+
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-1 text-end">
+        <a href="/" class="btn btn-secondary">Reset</a>
+    </div>
+</div>
+
+{% if team_ratios %}
+<div class="row">
+    <div class="col-xxl text-center" style="padding: 15px">
+        <div class="text-center">
+            <div class="d-inline-block fs-4 fw-bolder w-50 border rounded-pill border-primary border-2">Match results:</div>
+        </div>
+        {% include 'match_table.html' with matches=all_matches_info show_score=True %}
+    </div>
+    <div class="col-xxl text-center" style="padding: 15px">
+        <div class="text-center">
+            <div class="d-inline-block fs-4 fw-bolder w-50 border rounded-pill border-primary border-2">Upcoming matches:</div>
+        </div>
+        {% include 'match_table.html' with matches=upcoming_gameday_matches %}
+    </div>
+    <div class="col-xxl text-center" style="padding: 15px">
+        <div class="text-center">
+            <div class="d-inline-block fs-4 fw-bolder w-50 border rounded-pill border-primary border-2">Win/Loss ratios:</div>
+        </div>
+        {% include 'ratio_table.html' with teams=team_ratios %}
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-md-8 offset-md-4">
+        <div class="d-inline-block text-center fs-4 fw-bolder w-50 border rounded-pill border-warning border-3">No information found.</div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

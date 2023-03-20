@@ -1,0 +1,34 @@
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="text-end"> Team 1 </th>
+            <th></th>
+            <th class="text-start"> Team 2 </th>
+            <th> When </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in matches %}
+        <tr>
+             <td class="text-end">
+                <span> {{ record.nameTeam1 }} </span>
+                <img src="{{ record.iconUrlTeam1 }}" style="height:20px; width:20px"/>
+            </td>
+            {% if show_score %}
+                <td class="text-nowrap">
+                    {{ record.pointsTeam1 }} : {{  record.pointsTeam2 }}
+                </td>
+            {% else %}
+                <td>vs.</td>
+            {% endif %}
+            <td class="text-start">
+                <img src="{{ record.iconUrlTeam2 }}" style="height:20px; width:20px"/>
+                <span> {{ record.nameTeam2 }} </span>
+            </td>
+            <td class="text-nowrap">
+                {{ record.matchDateTime }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
