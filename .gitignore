@@ -1,0 +1,15 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+
+# Distribution / packaging / virtualenv
+venv/
+env/
+.idea/
+
+# Python #
+*.py[cod]
+*$py.class
